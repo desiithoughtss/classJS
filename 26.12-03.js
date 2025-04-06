@@ -42,9 +42,9 @@ let new1 = arr1.map((val) =>
 );
 console.log(arr1);
 
-// let new2 = arr1.map((val, index) =>
-//   console.log(`The marks for ${index + 1} is = ${(val.marks += 10)}`)
-// );
+let new2 = arr1.map((val, index) =>
+  console.log(`The marks for ${index + 1} is = ${(val.marks += 10)}`)
+);
 
 //1
 const users = [
@@ -139,3 +139,11 @@ const totalMarks = students
 
 console.log(totalMarks);
 console.log(students);
+
+//
+const students1 = [
+  { name: "Alice", marks: { math: 90, english: 85 } },
+  { name: "Bob", marks: { math: 70, english: 65 } },
+  { name: "Charlie", marks: { math: 80, english: 90 } },
+];
+

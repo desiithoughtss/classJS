@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+  </head>
+  <body>
+    <h1>Js</h1>
+    <input type="text" placeholder="enter number" id="one" />
+    <input type="text" placeholder="enter number" id="two" />
+    <input type="text" placeholder="enter number" id="three" />
+    <button onclick="result1()">Click Me</button>
+
+    <script>
+      function result1() {
+        const one = document.getElementById("one");
+        const two = document.getElementById("two");
+        const three = document.getElementById("three");
+        three.value = parseInt(one.value) + parseInt(two.value);
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h1>Result Sheet</h1>
+    <p>Student name: <input id="studentName" type="text" /></p>
+    <p>Physics Marks: <input id="phy" type="text" /></p>
+    <p>Chemistry Marks: <input id="chem" type="text" /></p>
+    <p>Maths Marks: <input id="maths" type="texft" /></p>
+    <p>Total marks: <input id="total" type="text" /></p>
+    <p>Percentage marks: <input id="percentage" type="text" /></p>
+    <p>Result <input type="text" id="result" /></p>
+
+    <button onclick="result()">Click Me</button>
+
+    <script>
+      function result() {
+        const phy = parseFloat(document.getElementById("phy").value);
+        const chem = parseFloat(document.getElementById("chem").value);
+        const maths = parseFloat(document.getElementById("maths").value);
+        const result = document.getElementById("result");
+        const totalMarks = phy + chem + maths;
+        const percentage = ((phy + chem + maths) / 300) * 100;
+
+        document.getElementById("total").value = totalMarks;
+        document.getElementById("percentage").value = percentage.toFixed(2);
+
+        percentage > 55 ? (result.value = "Pass") : (result.value = "Fail");
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Option Buttons</title>
+  </head>
+  <body>
+    <h3>Change Background</h3>
+    <input type="radio" onclick="show()" name="color" id="red" />
+    <input type="radio" onclick="show()" name="color" id="green" />
+    <input type="radio" onclick="show()" name="color" id="blue" />
+
+    <script>
+      function show() {
+        const radios = document.getElementsByName("color");
+        console.log(radios);
+        for (let radio of radios) {
+          if (radio.checked) {
+            const color = radio.id;
+            document.body.style.backgroundColor = color;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank</title>
+  </head>
+  <body>
+    <h3>Bank</h3>
+    <input type="checkbox" id="credit" name="card" onclick="result()" />
+    <label for="credit">Credit</label>
+    <input type="checkbox" id="debit" name="card" onclick="result()" />
+    <label for="debit">Debit</label>
+    <input type="checkbox" id="shop" name="card" onclick="result()" />
+    <label for="shop">Shop</label>
+    <h3>Which card person selected</h3>
+    <ul id="output"></ul>
+
+    <script>
+      function result() {
+        const r1 = document.getElementsByName("card");
+        const selected = [];
+
+        for (let r of r1) {
+          if (r.checked) {
+            selected.push(r.id);
+          }
+        }
+        const output = document.getElementById("output");
+        output.innerHTML = "";
+        selected.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          output.appendChild(li);
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio and checkbox</title>
+  </head>
+  <body>
+    <div class="one">
+      <h3>Q1</h3>
+      <p><b>Select the images</b></p>
+      <label for="imageOne">Image 1</label>
+      <input type="radio" name="image" id="imageOne" onclick="slectImage()" />
+      <label for="imageTwo">Image 2</label>
+      <input type="radio" name="image" id="imageTwo" onclick="slectImage()" />
+      <label for="imageThree">Image 3</label>
+      <input type="radio" name="image" id="imageThree" onclick="slectImage()" />
+      <img src="" alt="" class="image" />
+    </div>
+
+    <script>
+      function slectImage() {
+        const images = document.getElementsByName("image");
+        const displayedImage = document.querySelector(".image");
+        for (let image of images) {
+          if (image.checked) {
+            if (image.id === "imageOne") {
+              displayedImage.src =
+                "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg";
+            } else if (image.id === "imageTwo") {
+              displayedImage.src =
+                "https://existek3-838c.kxcdn.com/wp-content/uploads/2020/07/5.webp";
+            } else {
+              displayedImage.src =
+                "https://crowdforthink.com/assets/uploads/blogs/1596d415de5b8b78c9fcc5f1c0f1550c.jpg";
+            }
+          }
+        }
+      }
+    </script>
+
+    <hr />
+
+    <div class="two">
+      <h3>Q2</h3>
+      <p><b>Cards available</b></p>
+      <label for="credit">credit</label>
+      <input
+        type="checkbox"
+        name="card"
+        id="credit"
+        onclick="selectedCards()"
+      />
+      <label for="debit">debit</label>
+      <input type="checkbox" name="card" id="debit" onclick="selectedCards()" />
+      <label for="shop">shop</label>
+      <input type="checkbox" name="card" id="shop" onclick="selectedCards()" />
+      <p class="output"></p>
+    </div>
+
+    <script>
+      function selectedCards() {
+        const selectedCardList = [];
+        const cards = document.getElementsByName("card");
+        for (let card of cards) {
+          if (card.checked) {
+            selectedCardList.push(card.id);
+          }
+        }
+        const output = document.querySelector(".output");
+        output.innerText = "Selected Cards: " + selectedCardList.join(", ");
+      }
+    </script>
+
+    <hr />
+
+    <div class="three">
+      <h3>Q3</h3>
+      <p><b>Change the background color </b></p>
+      <label for="red">red</label>
+      <input type="radio" name="color" id="red" onclick="colorChange()" />
+      <label for="green">green</label>
+      <input type="radio" name="color" id="green" onclick="colorChange()" />
+      <label for="blue">blue</label>
+      <input type="radio" name="color" id="blue" onclick="colorChange()" />
+    </div>
+
+    <script>
+      function colorChange() {
+        const radios = document.getElementsByName("color");
+        const bodyBg = document.querySelector(".three");
+        for (let radio of radios) {
+          if (radio.checked) {
+            bodyBg.style.backgroundColor = radio.id;
+          }
+        }
+      }
+    </script>
+
+    <hr />
+
+    <div class="four">
+      <h3>Q4</h3>
+      <p><b>Select the course</b></p>
+      <label for="ba">BA</label>
+      <input
+        type="radio"
+        name="course"
+        id="ba"
+        onclick="selectCourseAndFloor()"
+      />
+      <label for="bsc">BSC</label>
+      <input
+        type="radio"
+        name="course"
+        id="bsc"
+        onclick="selectCourseAndFloor()"
+      />
+      <label for="btech">B.TECH</label>
+      <input
+        type="radio"
+        name="course"
+        id="btech"
+        onclick="selectCourseAndFloor()"
+      />
+      <label for="bca">BCA</label>
+      <input
+        type="radio"
+        name="course"
+        id="bca"
+        onclick="selectCourseAndFloor()"
+      />
+      <p class="feesandfloor"></p>
+    </div>
+
+    <script>
+      function selectCourseAndFloor() {
+        const courses = document.getElementsByName("course");
+        const feesandfloor = document.querySelector(".feesandfloor");
+        for (let course of courses) {
+          if (course.checked) {
+            if (course.id === "ba") {
+              feesandfloor.innerText = "Fees is: Rs.10000 and floor is:1st";
+            } else if (course.id === "bsc") {
+              feesandfloor.innerText = "Fees is: Rs.20000 and floor is:2st";
+            }
+            if (course.id === "btech") {
+              feesandfloor.innerText = "Fees is: Rs.30000 and floor is:3st";
+            } else {
+              feesandfloor.innerText = "Fees is: Rs.40000 and floor is:4st";
+            }
+          }
+        }
+      }
+    </script>
+
+    <hr />
+
+    <div class="five">
+      <h3>Q5</h3>
+      <p><b>Course Type</b></p>
+      <label for="ncc">NCC</label>
+      <input type="radio" name="ncourse" id="ncc" />
+      <label for="nss">NSS</label>
+      <input type="radio" name="ncourse" id="nss" />
+      <input type="text" class="percent" />
+      <button onclick="courseType()">Calc Percent</button>
+    </div>
+
+    <script>
+      function courseType() {
+        const ncourses = document.getElementsByName("ncourse");
+        let percent = parseFloat(document.querySelector(".percent").value);
+        if (percent === 100) {
+          return;
+        }
+        for (let ncourse of ncourses) {
+          if (ncourse.checked) {
+            if (ncourse.id === "ncc") {
+              percent = percent + 2;
+              if (percent >= 100) {
+                percent = 100;
+              }
+            }
+            if (ncourse.id === "nss") {
+              percent = percent + 3;
+              if (percent >= 100) {
+                percent = 100;
+              }
+            }
+          }
+        }
+        document.querySelector(".percent").value = percent;
+      }
+    </script>
+
+    <hr />
+
+    <div class="six">
+      <h3>Q6</h3>
+      <p><b>Bank services</b></p>
+      <label for="sms">SMS Alert</label>
+      <input type="checkbox" name="services" id="sms" onclick="services()" />
+      <label for="internetbanking">Internet Banking</label>
+      <input
+        type="checkbox"
+        name="services"
+        id="internetbanking"
+        onclick="services()"
+      />
+      <label for="checkbook"> Checkbook</label>
+      <input
+        type="checkbox"
+        name="services"
+        id="checkbook"
+        onclick="services()"
+      />
+      <p class="servicesCount"></p>
+      <p class="amount"></p>
+    </div>
+
+    <script>
+      function services() {
+        const services = document.getElementsByName("services");
+        const servicesCount = document.querySelector(".servicesCount");
+        const amount = document.querySelector(".amount");
+        let monthlyAmount = 0;
+        let noOfServices = 0;
+        for (let service of services) {
+          if (service.checked) {
+            if (service.id === "sms") {
+              monthlyAmount += 20;
+              noOfServices++;
+            }
+            if (service.id === "internetbanking") {
+              monthlyAmount += 20;
+              noOfServices++;
+            }
+            if (service.id === "checkbook") {
+              monthlyAmount += 20;
+              noOfServices++;
+            }
+          }
+        }
+        servicesCount.innerText = "Number of services are: " + noOfServices;
+        amount.innerText = "Monthly amount is: " + monthlyAmount;
+      }
+    </script>
+
+    <hr />
+
+    <div class="seven">
+      <h3>Q7</h3>
+      <p><b>Shop</b></p>
+      <label for="tshirt">Tshirt</label>
+      <input
+        type="checkbox"
+        name="categories"
+        id="tshirt"
+        onclick="shopping()"
+      />
+      <label for="pants">Pants</label>
+      <input
+        type="checkbox"
+        name="categories"
+        id="pants"
+        onclick="shopping()"
+      />
+      <label for="hat">Hat</label>
+      <input type="checkbox" name="categories" id="hat" onclick="shopping()" />
+    </div>
+    <label for="manual">Manual Payment</label>
+    <input type="radio" name="payment" id="manual" onclick="shopping()" />
+    <label for="online">Online Payment</label>
+    <input type="radio" name="payment" id="online" onclick="shopping()" />
+    <p class="details"></p>
+
+    <script>
+      function shopping() {
+        const categories = document.getElementsByName("categories");
+        const payments = document.getElementsByName("payment");
+        const details = document.querySelector(".details");
+
+        const detailsList = [];
+
+        for (let category of categories) {
+          if (category.checked) {
+            // if (category.id === "tshirt") {
+            //   detailsList.push("tshirt");
+            // }
+            // if (category.id === "pants") {
+            //   detailsList.push("pants");
+            // }
+            // if (category.id === "hat") {
+            //   detailsList.push("hat");
+            // }
+            detailsList.push(category.id);
+          }
+        }
+
+        for (let payment of payments) {
+          if (payment.checked) {
+            if (payment.id === "manual") {
+              detailsList.push("Manual Payment");
+            }
+            if (payment.id === "online") {
+              detailsList.push("Online Payment");
+            }
+          }
+        }
+
+        details.innerText = detailsList;
+      }
+    </script>
+
+    <hr />
+
+    <div class="eight">
+      <h3>Q8</h3>
+      <p><b>Match Country with Capital</b></p>
+      <label for="india">India</label>
+      <input type="radio" name="country" id="india" onclick="matchCapital()" />
+      <label for="australia">Australia</label>
+      <input
+        type="radio"
+        name="country"
+        id="australia"
+        onclick="matchCapital()"
+      />
+      <label for="srilanka">Sri Lanka</label>
+      <input
+        type="radio"
+        name="country"
+        id="srilanka"
+        onclick="matchCapital()"
+      />
+      <label for="canada">Canada</label>
+      <input type="radio" name="country" id="canada" onclick="matchCapital()" />
+      <br />
+      <label for="ottawa">Ottawa</label>
+      <input type="radio" name="capital" id="ottawa" />
+      <label for="canberra">Canberra </label>
+      <input type="radio" name="capital" id="canberra" />
+      <label for="delhi">Delhi</label>
+      <input type="radio" name="capital" id="delhi" />
+      <label for="colombo">Colombo</label>
+      <input type="radio" name="capital" id="colombo" />
+    </div>
+
+    <script>
+      function matchCapital() {
+        const countries = document.getElementsByName("country");
+        const capitals = document.getElementsByName("capital");
+        for (let country of countries) {
+          if (country.checked) {
+            if (country.id === "india") {
+              for (let capital of capitals) {
+                if (capital.id === "delhi") {
+                  capital.checked = true;
+                }
+              }
+            }
+            if (country.id === "australia") {
+              for (let capital of capitals) {
+                if (capital.id === "canberra") {
+                  capital.checked = true;
+                }
+              }
+            }
+            if (country.id === "srilanka") {
+              for (let capital of capitals) {
+                if (capital.id === "colombo") {
+                  capital.checked = true;
+                }
+              }
+            }
+            if (country.id === "canada") {
+              for (let capital of capitals) {
+                if (capital.id === "ottawa") {
+                  capital.checked = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <hr />
+
+    <div class="nine">
+      <h3>Q9</h3>
+      <p><b>Match the details</b></p>
+      <label for="array">Array</label>
+      <input type="radio" name="js" id="array" onclick="matchDetails()" />
+      <label for="if">If</label>
+      <input type="radio" name="js" id="if" onclick="matchDetails()" />
+      <label for="let">Let</label>
+      <input type="radio" name="js" id="let" onclick="matchDetails()" />
+
+      <br />
+
+      <label for="variables">Declare variables</label>
+      <input type="radio" name="values" id="variables" />
+      <label for="index">Start with 0</label>
+      <input type="radio" name="values" id="index" />
+      <label for="else">Else</label>
+      <input type="radio" name="values" id="else" />
+    </div>
+    <script>
+      function matchDetails() {
+        const jsValues = document.getElementsByName("js");
+
+        for (let js of jsValues) {
+          if (js.checked) {
+            if (js.id === "array") {
+              document.getElementById("index").checked = true;
+            }
+            if (js.id === "if") {
+              document.getElementById("else").checked = true;
+            }
+            if (js.id === "let") {
+              document.getElementById("variables").checked = true;
+            }
+          }
+        }
+      }
+    </script>
+
+    <hr />
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Select Course</h3>
+    <label for="courses">Courses:</label>
+    <select id="course" name="courses" onchange="courseDetails()">
+      <option value="any">Select any</option>
+      <option value="BCA">BCA</option>
+      <option value="MCA">MCA</option>
+    </select>
+    <p>Subjects in the course: <span class="subjectDetails"></span></p>
+    <p>Fees: <span class="fees"></span></p>
+    <p>Duration: <span class="duration"></span></p>
+  </body>
+  <script>
+    function courseDetails() {
+      const courses = document.getElementById("course");
+      const subjects = document.querySelector(".subjectDetails");
+      const fees = document.querySelector(".fees");
+      const duration = document.querySelector(".duration");
+      console.log(courses.options.selectedIndex);
+      console.log(courses.value);
+      console.log(courses.options[1].value);
+      console.log(courses.options);
+      console.log(courses.length);
+
+      if (courses.value === "BCA") {
+        subjects.innerText = "HTML, CSS";
+        fees.innerText = "10000";
+        duration.innerText = "3 Years";
+      } else if (courses.value === "MCA") {
+        subjects.innerText = "Python, ML";
+        fees.innerText = "20000";
+        duration.innerText = "2 Years";
+      } else {
+        subjects.innerText = "";
+        fees.innerText = "";
+        duration.innerText = "";
+      }
+    }
+  </script>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Shop</h3>
+    <label for="types">Types:</label>
+    <select name="types" id="types" onchange="shop()">
+      <option value="any">Select your type</option>
+      <option value="local">Local</option>
+      <option value="imported">Imported</option>
+    </select>
+    <br />
+    <br />
+    <label for="category">Category: </label>
+    <select name="category" id="category" onchange="categoryFunction()">
+      <option id="any1" value="any">Select your category</option>
+    </select>
+    <br />
+    <br />
+    <label for="products">Products:</label>
+    <select name="products" id="products" onchange="price()">
+      <option id="any2" value="any">Select your products</option>
+    </select>
+    <p>
+      Price: <span id="price"><small>chosse your product first</small></span>
+    </p>
+    <label for="quantity">Qantity: </label>
+    <input
+      type="number"
+      name="quantity"
+      id="quantity"
+      placeholder="Enter your quantity"
+      onchange="bill()"
+    />
+    <p>Total Bill: <span id="totalBill"></span></p>
+
+    <script>
+      function shop() {
+        const type = document.getElementById("types").value;
+        const category = document.getElementById("category");
+        const defaultCategory = document.querySelector("#any1");
+        const product = document.getElementById("products");
+        const defaultProduct = document.querySelector("#any2");
+
+        category.innerHTML = "";
+        category.appendChild(defaultCategory);
+        product.innerHTML = "";
+        product.appendChild(defaultProduct);
+        if (type === "local") {
+          const option1 = document.createElement("option");
+          const option2 = document.createElement("option");
+          option1.setAttribute("value", "electronics");
+          option2.setAttribute("value", "fashion");
+          option1.innerText = "Electronics";
+          option2.innerText = "Fashion";
+          category.appendChild(option1);
+          category.appendChild(option2);
+        } else if (type === "imported") {
+          const option = document.createElement("option");
+          option.setAttribute("value", "fashion");
+          option.innerText = "Fashion";
+          category.appendChild(option);
+        }
+      }
+      function categoryFunction() {
+        const category = document.getElementById("category");
+        const product = document.getElementById("products");
+        const defaultProduct = document.querySelector("#any2");
+
+        product.innerHTML = "";
+        product.appendChild(defaultProduct);
+
+        if (category.value === "electronics") {
+          const product1 = document.createElement("option");
+          const product2 = document.createElement("option");
+          product1.setAttribute("value", "mobile");
+          product2.setAttribute("value", "tv");
+          product1.innerText = "Mobile";
+          product2.innerText = "T.V.";
+          product.appendChild(product1);
+          product.appendChild(product2);
+        } else if (category.value === "fashion") {
+          const product1 = document.createElement("option");
+          const product2 = document.createElement("option");
+          product1.setAttribute("value", "tshirts");
+          product2.setAttribute("value", "jeans");
+          product1.innerText = "Tshirts";
+          product2.innerText = "Jeans";
+          product.appendChild(product1);
+          product.appendChild(product2);
+        }
+      }
+
+      let priceCost = 0;
+      function price() {
+        const price = document.getElementById("price");
+        const product = document.getElementById("products");
+        if (product.value === "mobile") priceCost = 9000;
+        if (product.value === "tv") priceCost = 8000;
+        if (product.value === "tshirts") priceCost = 700;
+        if (product.value === "jeans") priceCost = 600;
+        price.innerHTML = priceCost;
+      }
+
+      function bill() {
+        const quantity = document.getElementById("quantity");
+        const bill = document.getElementById("totalBill");
+        bill.innerHTML = quantity.value * priceCost;
+      }
+    </script>
+  </body>
+</html>
+
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radio</title>
+  </head>
+  <body>
+    <label for="red">Red</label>
+    <input type="radio" name="color" id="red" onclick="colorChange()" />
+    <label for="green">Green</label>
+    <input type="radio" name="color" id="green" onclick="colorChange()" />
+    <label for="blue">Blue</label>
+    <input type="radio" name="color" id="blue" onclick="colorChange()" />
+    <input type="text" name="textbox" id="textbox" />
+    <script>
+      function colorChange() {
+        const colors = document.getElementsByName("color");
+        const text = document.getElementById("textbox");
+
+        for (let color of colors) {
+          if (color.checked) {
+            if (color.id === "red") {
+              console.log(text);
+              text.style.color = "red";
+            } else if (color.id === "green") {
+              console.log(text);
+              text.style.color = "green";
+            } else if (color.id === "blue") {
+              console.log(text);
+              text.style.color = "blue";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images</title>
+  </head>
+  <body>
+    <label for="one">Image 1</label>
+    <input type="radio" name="image" id="one" onclick="imageChange()" />
+    <label for="two">Image 2</label>
+    <input type="radio" name="image" id="two" onclick="imageChange()" />
+    <div><img src="" alt="" id="image" /></div>
+
+    <script>
+      function imageChange() {
+        const images = document.getElementsByName("image");
+        const finalImage = document.getElementById("image");
+
+        for (let image of images) {
+          if (image.checked) {
+            if (image.id === "one") {
+              finalImage.src =
+                "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg";
+            }
+            if (image.id === "two") {
+              finalImage.src =
+                "https://existek3-838c.kxcdn.com/wp-content/uploads/2020/07/5.webp";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <h1>Questions</h1>
+
+    <div id="questionbank"></div>
+
+    <script>
+      const questions = [
+        {
+          question: "What is the capital of France?",
+          options: ["Berlin", "Madrid", "Paris", "Rome"],
+          answer: "Paris",
+        },
+        {
+          question: "Which is the largest planet in our solar system?",
+          options: ["Earth", "Jupiter", "Mars", "Saturn"],
+          answer: "Jupiter",
+        },
+        {
+          question: "Who wrote 'Hamlet'?",
+          options: [
+            "Charles Dickens",
+            "William Shakespeare",
+            "Mark Twain",
+            "Jane Austen",
+          ],
+          answer: "William Shakespeare",
+        },
+      ];
+
+      const questionbank = document.getElementById("questionbank");
+
+      questions.forEach((questionObj, index) => {
+        const questionText = `<p>${index + 1}. ${questionObj.question}</p>`;
+        questionbank.innerHTML += questionText;
+
+        questionObj.options.forEach((option) => {
+          const optionHTML = `
+            <label>
+              <input type="radio" name="question${index}" value="${option}" />
+              ${option}
+            </label>
+
+          `;
+          questionbank.innerHTML += optionHTML;
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      #expenses {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .entries {
+        max-width: 100px;
+        margin-top: 10px;
+      }
+      button {
+        margin-left: 10px;
+      }
+      #total {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Budget</h1>
+    <label for="budget">Budget:</label>
+    <input type="text" name="budget" id="budget" placeholder="budget" />
+    <i
+      style="margin-left: 20px; cursor: pointer"
+      class="fa-solid fa-plus"
+      onclick="show()"
+    ></i>
+    <button onclick="sum()">Find total Expenses</button>
+    <div id="expenses"></div>
+    <div id="total">Total Expenses: <span class="final"></span></div>
+
+    <script>
+      let counter = 1;
+      function show() {
+        const newElement = document.createElement("input");
+        newElement.setAttribute("type", "text");
+        newElement.setAttribute("placeholder", "enter value");
+        newElement.setAttribute("id", `t${counter++}`);
+        newElement.setAttribute("class", "entries");
+        document.querySelector("#expenses").appendChild(newElement);
+      }
+
+      function sum() {
+        const budget = document.getElementById("budget").value;
+        const final = document.querySelector(".final");
+        const sum = document.getElementsByClassName("entries");
+        let finalSum = 0;
+        for (let value of sum) {
+          finalSum += parseInt(value.value);
+        }
+        // console.log(finalSum);
+        let ans = parseInt(budget) - finalSum;
+        final.innerText = ans;
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Product Records</h1>
+    <table border="2" id="datatab">
+      <tr>
+        <td>SNo</td>
+        <td>Title</td>
+        <td>Price</td>
+      </tr>
+    </table>
+
+    <script>
+      async function fetchData() {
+        const response = await fetch("https://dummyjson.com/products");
+        const data = await response.json();
+        // console.log(data.products);
+        const table = document.getElementById("datatab");
+        data.products.slice(0, 5).forEach((element) => {
+          const row = table.insertRow();
+          row.innerHTML = `<td>${element.id} </td> <td>${element.title}</td><td>${element.price}</td>`;
+        });
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <h1>PDF</h1>
+    <input type="button" value="Download now" onclick="downloadPdf()" />
+    <script>
+      function downloadPdf() {
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+        doc.text("Hello, world!", 10, 10);
+        // doc.save("example.pdf");
+
+        doc.rect(10, 10, 180, 160);
+        doc.circle(100, 100, 40);
+
+        doc.line(10, 180, 200, 180);
+
+        // doc.save("shapes_example.pdf");
+
+        doc.setFillColor(240, 240, 240);
+        doc.rect(0, 0, 210, 297, "F");
+
+        doc.setFont("courier");
+        doc.setTextColor(255, 0, 0);
+        doc.text("This is a red Courier text", 10, 20);
+
+        doc.text("Enter your name:", 10, 20);
+        doc.rect(10, 25, 180, 10);
+
+        // doc.save("form_example.pdf");
+        doc.text("Click here to visit Google", 10, 20);
+        doc.setTextColor(0, 0, 255);
+        doc.textWithLink("Click here", 10, 30, {
+          url: "https://www.google.com",
+        });
+
+        doc.save("link_example.pdf");
+      }
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="query1" onclick="show1()">Query1</div>
+    <div id="query2" onclick="show2()">Query2</div>
+    <div id="query3" onclick="show3()">Query3</div>
+    <script>
+      function show3() {
+        if (true) {
+          var a = 10;
+          let b = 20;
+          console.log(b);
+        }
+        console.log(a);
+        // console.log(b);
+      }
+
+      function show2() {
+        document.querySelector("#query2").innerHTML = "<b>Hello<b>";
+        setTimeout(() => alert("hello"), 0);
+        console.log(1234567890);
+      }
+
+      function show3() {
+        const PI = 3.14;
+        document.querySelector("#query3").innerHTML = `<b>${PI}</b>`;
+      }
+    </script>
+  </body>
+</html>

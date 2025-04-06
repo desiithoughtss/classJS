@@ -30,3 +30,5 @@ const leapYear = (year) => {
 };
 const result4 = leapYear(1900);
 console.log(result4);
+
+
